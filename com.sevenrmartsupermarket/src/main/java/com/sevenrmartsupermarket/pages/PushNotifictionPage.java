@@ -6,22 +6,24 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.sevenrmartsupermarket.utilities.GeneralUtility;
+import com.sevenrmartsupermarket.utilities.WaitUtility;
 
 public class PushNotifictionPage {
 
 	WebDriver driver;
 	GeneralUtility generalutility;
+	WaitUtility waitUtility;
 
 	@FindBy(xpath = "//input[@placeholder='Enter Title']")
 	WebElement titlePath;
 	@FindBy(xpath = "//input[@placeholder='Enter Description']")
 	WebElement descriptionPath;
 	@FindBy(xpath = "//i[@class='fa fa-bell']")
-	WebElement sendpath;
+	WebElement sendPath;
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	WebElement alertMessage;
 	@FindBy(xpath = "(//a[@href='https://groceryapp.uniqassosiates.com/admin/list-notifications'])[1]")
-	WebElement pushnotifbutton;
+	WebElement pushNotifButton;
 	
 
 	public PushNotifictionPage(WebDriver driver) {
@@ -30,7 +32,7 @@ public class PushNotifictionPage {
 	}
 	public void click_On_PushButton()
 	{
-		pushnotifbutton.click();
+		pushNotifButton.click();
 	}
 
 	public void enter_Title(String title) {
@@ -42,7 +44,7 @@ public class PushNotifictionPage {
 	}
 
 	public void clickOn_Send() {
-		sendpath.click();
+		sendPath.click();
 	}
 
 	public void sendNotification(String titles, String descriptions) 

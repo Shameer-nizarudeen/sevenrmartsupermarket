@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.sevenrmartsupermarket.base.Base;
+import com.sevenrmartsupermarket.listeners.RetryAnalyzer;
 import com.sevenrmartsupermarket.pages.HomePage;
 import com.sevenrmartsupermarket.pages.LoginPage;
 
@@ -12,7 +13,7 @@ public class LoginTest extends Base {
 	HomePage homepage;
 
 	@Test
-	public void verify_login() {
+	public void verify_Login() {
 		loginpage = new LoginPage(driver);
 		homepage = new HomePage(driver);
 		String expectedProfileName = "Admin";
@@ -22,8 +23,8 @@ public class LoginTest extends Base {
 
 	}
 
-	@Test
-	public void verify_invalid_login_errormessage() {
+	@Test(groups = "smoke",retryAnalyzer = RetryAnalyzer.class)
+	public void verify_Invalid_Login_Errormessage() {
 
 		loginpage = new LoginPage(driver);
 		homepage = new HomePage(driver);

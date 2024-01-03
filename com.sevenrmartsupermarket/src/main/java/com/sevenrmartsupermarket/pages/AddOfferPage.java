@@ -15,30 +15,34 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.sevenrmartsupermarket.constants.Constants;
 import com.sevenrmartsupermarket.utilities.GeneralUtility;
 import com.sevenrmartsupermarket.utilities.PageUtility;
+import com.sevenrmartsupermarket.utilities.WaitUtility;
 
 public class AddOfferPage {
 	WebDriver driver;
 	GeneralUtility generalUtility;
 	PageUtility pageUtility;
+	WaitUtility waitutility;
 
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-offercode']//i[@class='fas fa-arrow-circle-right']")
-	WebElement selectbutton;
+	WebElement selectButton;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
-	WebElement newbutton;
+	WebElement newButton;
 	@FindBy(xpath = "//input[@id='offer_code']")
-	WebElement entercode;
+	WebElement enterCode;
 	@FindBy(xpath = "//input[@value='yes']")
-	WebElement chooseyes;
+	WebElement chooseYes;
 	@FindBy(xpath = "//input[@id='offer_per']")
-	WebElement enterpercentage;
+	WebElement enterPercentage;
 	@FindBy(xpath = "//input[@id='offer_price']")
-	WebElement enterprice;
+	WebElement enterPrice;
 	@FindBy(xpath = "//div[@class='note-editable card-block']")
-	WebElement enterdescription;
+	WebElement enterDescription;
 	@FindBy(xpath = "//input[@id='main_img']")
-	WebElement choosefile;
+	WebElement chooseFile;
 	@FindBy(xpath = "//button[contains(text(),'Save')]")
-	WebElement savebutton;
+	WebElement saveButton;
+	@FindBy(xpath = "//h1[contains(text(),'Add Offercode')]")
+	WebElement offerFill;
 
 	public AddOfferPage(WebDriver driver) {
 		this.driver = driver;
@@ -46,42 +50,50 @@ public class AddOfferPage {
 	}
 
 	public void clickOnManageOfferCode() {
-		selectbutton.click();
+		selectButton.click();
 	}
 
 	public void ClickOn_New() {
-		newbutton.click();
+		newButton.click();
 	}
 
 	public void enter_OfferCode() {
-		entercode.sendKeys("offercode1");
+		enterCode.sendKeys("offercode1");
 	}
 
 	public void choose_YesOrNo() {
-		chooseyes.click();
+		chooseYes.click();
 	}
 
 	public void enter_OfferPercentage() {
-		enterpercentage.sendKeys("50%");
+		enterPercentage.sendKeys("50%");
 	}
 
 	public void enterThe_Price() {
-		enterprice.sendKeys("1000");
+		enterPrice.sendKeys("1000");
 	}
 
 	public void enter_TheDdescription() {
-		enterdescription.sendKeys("Test Description");
+		enterDescription.sendKeys("Test Description");
 	}
 
 	public void Choose_TheFile() {
 
 		File file = new File(Constants.IMAGE_FILE_PATH);
-		choosefile.sendKeys(file.getAbsolutePath());
+		chooseFile.sendKeys(file.getAbsolutePath());
 
 	}
 
 	public void save_ButtonClick() {
 		pageUtility=new PageUtility(driver);
-		pageUtility.scrollAndClick(savebutton);
+		pageUtility.scrollAndClick(saveButton);
 	}
+	public String get_OfferCode_heading()
+	{
+		 generalUtility=new GeneralUtility(driver);
+	     String printOfferCodeHeading=generalUtility.get_Textof_element(offerFill);
+	     System.out.println(printOfferCodeHeading);
+	     return printOfferCodeHeading;
+	}
+	
 }

@@ -1,6 +1,7 @@
 package com.sevenrmartsupermarket.tests;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.sevenrmartsupermarket.base.Base;
@@ -16,7 +17,7 @@ public class AddOfferTest extends Base {
 	AddOfferPage addofferpage;
 	
 	
-	@Test
+	@Test(groups = {"smoke","regression"})
 	public void navigateTo_AddOfferCodeOption()
 	{
 		loginpage = new LoginPage(driver);
@@ -32,6 +33,9 @@ public class AddOfferTest extends Base {
 		addofferpage.enter_TheDdescription();
 		addofferpage.Choose_TheFile();
 		addofferpage.save_ButtonClick();
+		String expectedResult="Add Offercode";
+		String actualResult=addofferpage.get_OfferCode_heading();
+		Assert.assertEquals(actualResult, expectedResult);
 		
 		
 	}

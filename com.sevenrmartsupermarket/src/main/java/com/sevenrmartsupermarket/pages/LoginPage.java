@@ -19,11 +19,11 @@ public class LoginPage {
 	FileInputStream ip;
 
 	@FindBy(xpath = "//input[@name='username']")
-	WebElement usrname;
+	WebElement usrName;
 	@FindBy(xpath = "//input[@name='password']")
 	WebElement pass;
 	@FindBy(xpath = "//button[contains(text(),'Sign In')]")
-	WebElement signinbutton;
+	WebElement signinButton;
 	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
 	WebElement errorMessage;
 
@@ -43,7 +43,7 @@ public class LoginPage {
 	}
 
 	public void enter_Username(String user_name) {
-		usrname.sendKeys(user_name);
+		usrName.sendKeys(user_name);
 	}
 
 	public void enter_password(String user_pass) {
@@ -51,19 +51,19 @@ public class LoginPage {
 	}
 
 	public void sign_In() {
-		signinbutton.click();
+		signinButton.click();
 
 	}
 
 	public void login() {
-		String Username = properties.getProperty("username");
-		String Password = properties.getProperty("password");
-		login(Username, Password);
+		String UserName = properties.getProperty("username");
+		String PassWord = properties.getProperty("password");
+		login(UserName, PassWord);
 	}
 
-	public void login(String Username, String Password) {
-		enter_Username(Username);
-		enter_password(Password);
+	public void login(String User_Name, String Pass_Word) {
+		enter_Username(User_Name);
+		enter_password(Pass_Word);
 		sign_In();
 
 	}

@@ -25,27 +25,31 @@ public class ManageDeliverBoyPage {
 	WaitUtility waitutility;
 
 	@FindBy(xpath = "//i[@class='nav-icon fas fa-user-plus']")
-	WebElement managedelivbutton;
+	WebElement manageDelivButton;
 	@FindBy(xpath = "(//i[@class='fas fa-edit'])[1]")
-	WebElement newbutton;
+	WebElement newButton;
 	@FindBy(xpath = "//input[@id='name']")
-	WebElement namefield;
+	WebElement nameField;
 	@FindBy(xpath = "//input[@id='email']")
-	WebElement emailfield;
+	WebElement emailField;
 	@FindBy(xpath = "//input[@id='phone']")
-	WebElement phonefield;
+	WebElement phoneField;
 	@FindBy(xpath = "//textarea[@id='address']")
-	WebElement addressfield;
+	WebElement addressField;
 	@FindBy(xpath = "//input[@id='username']")
-	WebElement usernamefield;
+	WebElement usernameField;
 	@FindBy(xpath = "//input[@id='password']")
-	WebElement passfield;
+	WebElement passField;
 	@FindBy(xpath = "//button[@type='submit']")
-	WebElement savebutton;
+	WebElement saveButton;
 	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']//tbody//td[1]")
 	List<WebElement> deliveryBoyNames;
-
-	 
+	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
+	WebElement alertMess;
+	@FindBy(xpath = "//h3[contains(text(),'Enter Delivery Boy Informations')]")
+	WebElement userInfo;
+	@FindBy(xpath = "//h1[contains(text(),'List Delivery Boy')]")
+	WebElement userList;
 
 	public ManageDeliverBoyPage(WebDriver driver) {
 		this.driver = driver;
@@ -66,37 +70,37 @@ public class ManageDeliverBoyPage {
 
 	public void clickon_ManageDeliveryBoyOption() {
 
-		managedelivbutton.click();
+		manageDelivButton.click();
 
 	}
 
 	public void clickOn_Edit() {
-		newbutton.click();
+		newButton.click();
 	}
 
 	public void enter_Name(String name) {
-		namefield.sendKeys(name);
+		nameField.sendKeys(name);
 	}
 
 	public void enter_Email(String email) {
-		emailfield.sendKeys(email);
+		emailField.sendKeys(email);
 	}
 
 	public void enter_PhoneNumber(String number) {
-		phonefield.sendKeys(number);
+		phoneField.sendKeys(number);
 	}
 
 	public void enter_Address(String address) {
 
-		addressfield.sendKeys(address);
+		addressField.sendKeys(address);
 	}
 
 	public void enter_UserName(String username) {
-		usernamefield.sendKeys(username);
+		usernameField.sendKeys(username);
 	}
 
 	public void enter_Password(String password) {
-		passfield.sendKeys(password);
+		passField.sendKeys(password);
 
 	}
 
@@ -108,7 +112,7 @@ public class ManageDeliverBoyPage {
 		WebElement start = driver.findElement(By.xpath("//button[@type='submit']"));
 		wait.until(ExpectedConditions.elementToBeClickable(start));
 
-		savebutton.click();
+		saveButton.click();
 	}
 
 	public void print_BoysNames() {
@@ -124,7 +128,7 @@ public class ManageDeliverBoyPage {
 
 		List<String> names = new ArrayList<String>();
 		generalUtility = new GeneralUtility(driver);
-		pageutility=new PageUtility(driver);
+		pageutility = new PageUtility(driver);
 		names = generalUtility.getTextOfElements(deliveryBoyNames);
 		System.out.println(names);
 
@@ -134,9 +138,27 @@ public class ManageDeliverBoyPage {
 				break;
 			}
 		}
-		WebElement editbutton = driver.findElement(By.xpath("//table[@class='table table-bordered table-hover table-sm']//tr["+index+"]//td[8]//a[1]"));
+		WebElement editbutton = driver.findElement(By
+				.xpath("//table[@class='table table-bordered table-hover table-sm']//tr[" + index + "]//td[8]//a[1]"));
 		pageutility.scrollAndClick(editbutton);
 
 	}
+
+	public String get_UserInfo_print() {
+
+		 generalUtility=new GeneralUtility(driver);
+	     String printUserInfo_Heading=generalUtility.get_Textof_element(userInfo);
+	     System.out.println(printUserInfo_Heading);
+	     return printUserInfo_Heading;
+	}
+	public String get_UserList_Heading()
+	{
+		 generalUtility=new GeneralUtility(driver);
+	     String print_UserList_Heading=generalUtility.get_Textof_element(userList);
+	     System.out.println(print_UserList_Heading);
+	     return print_UserList_Heading;
+		
+	}
+	
 
 }

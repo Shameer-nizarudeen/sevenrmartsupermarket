@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.sevenrmartsupermarket.base.Base;
+import com.sevenrmartsupermarket.listeners.RetryAnalyzer;
 import com.sevenrmartsupermarket.pages.HomePage;
 import com.sevenrmartsupermarket.pages.LoginPage;
 import com.sevenrmartsupermarket.pages.PushNotifictionPage;
@@ -33,10 +34,6 @@ public class PushNotifictionTests extends Base {
 		String notifdata6 = excelread.getCellData(2, 1);
 		System.out.println(notifdata6);
 		System.out.println();
-		
-		
-		
-	
 		excelread.setExcelFile("LoginData", "Login Credentials");
 		String logindata1 = excelread.getCellData(0, 0);
 		System.out.println(logindata1);
@@ -54,7 +51,7 @@ public class PushNotifictionTests extends Base {
 		
 
 	}
-	@Test
+	@Test(groups = "smoke")
 	public void verify_AlertMessage()
 	{
 		loginpage = new LoginPage(driver);
